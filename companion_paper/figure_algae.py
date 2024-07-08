@@ -1,10 +1,8 @@
 import numpy as np
 import matplotlib.pyplot as plt
 plt.rcParams.update({'font.size': 13})
-import csv
 import os
 
-from compute_estimators import compute_confident_intervals
 from compute_estimators  import compute_alpha_hat
 from tutorial import generate_pp
 
