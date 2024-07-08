@@ -7,11 +7,13 @@ We provide scripts that have been used for creating the figure of Section 4 of t
 
 ### Content of the scripts
 
-- ``figure_explanations.py``correspond to Figure 1, that provides examples of estimation of the hyperuniformity exponent of Ginibre point process and RSA point process.
+- ``figure_explanations.py``correspond to Figure 1, that provides examples of estimation of the hyperuniformity exponent of Ginibre point process and RSA point process. It use pre-computed realisation of these two point process, that have been stored in the [./data](./data) folder. 
 
--   ``figure_box_perturbed_lattice.py`` correspond to Figure 2, that study the distribution of the estimator of the hyperuniformity exponent when considering perturbed lattice. 
+-   ``figure_box_perturbed_lattice.py`` correspond to Figure 2, that studies the distribution of the estimator of the hyperuniformity exponent when considering perturbed lattice. First part of the script generate the data that have been stored in the [./data](./data) folder. Second part create the Figure 2.
 
-- `compute_wavelet_transforms(Phi, J,  i_min, i_max)`: compute the curve $`j \in J \mapsto \mathcal{C}(j)`$ used for estimating the hyperuniformity exponent (refer to Section 4.1 of the companion paper) with the point pattern Phi, using the set of scale J and centered Hermites wavelets of indexes with components between i_min and i_max -1.
+-   ``table_coverage.py`` correspond to Table 1, that computes the coverage rate for perturbed lattices. Data concerning the computed covariance matrices are not on the [./data/cov](./data/cov) due to their size, but  are available uppon request. 
 
-- `psi(x, n)` : compute the value at x of the n-th one-dimensional Hermite wavelet.
+  - ``figure_match.py`` correspond to Figure 3, that study the distribution of the estimator of the hyperuniformity exponent when considering matching point process. First part of the script generate the data that have been stored in the [./data](./data) folder. Second part create the Figure 3. 
+
+- ``figure_algae.py`` correspond to Figure 4, that estimate the hyperuniformity exponent for a system of marine algae studied in [''Circular swimming motility and disordered hyperuniform state in an algae system''](https://www.pnas.org/doi/full/10.1073/pnas.2100493118). Position of the points are in [./data/point_patterns](./data/point_patterns) folder
 
