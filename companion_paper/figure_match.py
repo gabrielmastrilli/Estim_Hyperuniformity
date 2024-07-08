@@ -1,5 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
+import os
+
 plt.rcParams.update({'font.size': 13})
 from structure_factor.point_processes import (
     HomogeneousPoissonPointProcess,
@@ -8,8 +10,8 @@ from structure_factor.point_processes import (
 from structure_factor.spatial_windows import BoxWindow
 from structure_factor.utils import meshgrid_to_column_matrix
 from structure_factor.point_processes import HomogeneousPoissonPointProcess
-import compute_alpha_hat
-import os
+
+from compute_estimators  import compute_alpha_hat
 
 
 ### Creating points pattern of matched point process and estimating alpha with 75 tapers and 16 tapers
