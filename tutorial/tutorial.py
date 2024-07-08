@@ -1,13 +1,14 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-import compute_alpha_hat
-import generate_pp
+from compute_estimators import compute_confident_intervals
+from compute_estimators  import compute_alpha_hat
+from tutorial import generate_pp
 
 ### Example: estimation for a poisson point process.
 
 #Length side of the observation window [-R, R]^2
-R = 30
+R = 20
 #Generate a Poisson pattern of intensity 1
 Phi = generate_pp.PPP(R)
 
@@ -45,6 +46,7 @@ ax = plt.gca()
 ax.set_aspect('equal', adjustable="datalim")
 plt.axis('off')
 plt.title("Poisson point pattern in $[$-"+str(R)+","+str(R)+"$]^2$. \n $\\alpha$ =0")
+print("Number of points :"+str(len(Phi)))
 
 plt.show()
 
@@ -52,7 +54,7 @@ plt.show()
 ### Example: estimation for a perturbed lattice.
 
 #Length side of the observation window [-R, R]^2
-R = 40
+R = 35
 alpha = 1
 
 #Generate a perturbed lattice of intensity 1 with hyperuniformity exponent alpha
@@ -94,3 +96,32 @@ plt.title("$\widehat{\\alpha} = $" +str(alpha_hat)[:8])
 plt.show()
 
 plt.show()
+
+### Example: computation of the asymptotic confidence interval for a poisson point process.
+
+#Fix the seed in order to possibly re-use the precomputed convariance matrix in the /data/cov folder
+np.random.seed(1)
+
+#Length side of the observation window [-R, R]^2
+R = 25
+#Generate a Poisson pattern of intensity 1
+Phi = generate_pp.PPP(R)
+
+#Min and max degree of the 1d-hermites polynomials involved in the 2d-hermites wavelets
+#To reduce computation time, the use i_max = 7 instead of i_max = 10.
+i_min = 0
+i_max = 7
+
+#The set of scales used for estimating alpha with a linear regression
+#To reduce computation time, only 20 scales have been used.
+J = np.linspace(0.5, 1, num = 20)
+
+#Compute and print of alpha hat.
+alpha_hat = compute_alpha_hat.compute_alpha(Phi, J, i_min, i_max)
+print(alpha_hat)
+
+q_1 = 0.025
+q_2 = 0.975
+a, b = compute_confident_intervals.compute_confident_interval(q_1, q_2, R, alpha_hat, J, i_min, i_max)
+print("Asymptotic confidence intervals \n")
+print("["+str(a)[:6]+", "+str(b)[:6]+"]")
