@@ -28,7 +28,7 @@ In this paper, we develop multi-scale, multi-taper estimators the hyperuniformit
 
 In [./compute_estimators](./compute_estimators), we provide functions to compute estimators of the hyperuniformity exponent introduced in [''Estimating the hyperunformity exponent''](https://arxiv.org) and its associated asymptotic confident intervals.
 
-- ``compute_alpha_hat.py``: compute the estimators of the hyperuniformity exponent for point processes in dimension 2, using Hermites wavelets, and compute the regression curve leading to its estimator (refer to Section 4 of the companion paper). 
+- ``compute_alpha_hat.py``: compute the estimators of the hyperuniformity exponent for point processes in dimension two, using Hermites wavelets, and compute the regression curve leading to its estimator (refer to Section 4 of the companion paper). 
 - ``compute_confident_interval``: compute the covariance matrices used for the confident intervals and estimate the quantile of the asymptotic distribution (refer to Section 3.4  of the companion paper).
 
 In [./tutorial](./tutorial) we provide tutorial for using ``compute_alpha_hat.py`` and ``compute_confident_interval`.
