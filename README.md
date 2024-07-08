@@ -6,7 +6,7 @@
 
 ## Introduction
 
-`EstimHyperuniformityAlpha` currently contains Python functions that allows for computing estimators of the hyperuniformity exponent of a point process, and associated asymptotic confidence intervals. It also contains code for sampling hyperuniform perturbed lattices with prescribed hyperuniformity exponent. 
+`EstimHyperuniformityAlpha` currently contains Python functions that allows for computing estimators of the hyperuniformity exponent of point processes, and associated asymptotic confidence intervals. It also contains Python functions for sampling hyperuniform perturbed lattices with prescribed hyperuniformity exponent. 
 
 Finally, it provides the scripts that has been used for creating the figures of the associated research paper titled [''Estimating the hyperunformity exponent''](https://arxiv.org).
 
@@ -42,7 +42,7 @@ In [./tutorial](./tutorial) we provide the scripts and the data that has been us
 ## How to cite this work
 
   ```bash
-  @preprint{mastrilli2024alpha,
+  @preprint{?,
     arxivid = {},
     journal = {arXiv},
     title = {Estimating the hyperuniformity exponent of a point process},
