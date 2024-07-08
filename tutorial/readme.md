@@ -11,5 +11,5 @@ The estimations are done with the multi-tapers, multi-scale estimator based on t
 
 ## Companion paper 
 
-For theoretical properties of the estimator, we refer to Section 2-3 of the aforementionned paper, and for choices of the parameters, we refer to Section 4.1.
+For theoretical properties of the estimator, we refer to Section 2-3 of the aforementionned paper, and for the choices of the parameters, we refer to Section 4.1.
 
