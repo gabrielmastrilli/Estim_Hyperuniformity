@@ -11,5 +11,5 @@ They use the multi-tapers, multi-scale estimators (with Hermite wavelets tapers)
 
 ## Companion paper 
 
-For theoretical properties of the estimator, we refer to Sections 2-3 of the aforementionned paper, and for the choices of the parameters, we refer to Section 4.1.
+For theoretical properties of the estimators, we refer to Sections 3 of the aforementioned paper, and concerning the choices of its parameters, we refer to Section 4.1.
 
