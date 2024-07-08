@@ -3,10 +3,10 @@ import matplotlib.pyplot as plt
 plt.rcParams.update({'font.size': 13})
 import csv
 import os
-import compute_alpha_hat
 
-import compute_alpha_hat
-import generate_pp
+from compute_estimators import compute_confident_intervals
+from compute_estimators  import compute_alpha_hat
+from tutorial import generate_pp
 
 
 #Mean of the curves C associated to each frame
