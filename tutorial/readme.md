@@ -7,7 +7,7 @@ We provide three tutorials in the python file ``tutorial.py``.
 - one for estimating the hyperuniformity exponent of a cloacked and perturbed lattice by stable distribution in dimension two
 - one for computing the asymptotic confidence interval associated to one estimation of the hyperuniformity exponent for a Poisson point process.
 
-The estimations are done with the multi-tapers, multi-scale estimator based on the Hermite wavelets introduced in [''Estimating the hyperunformity exponent''](https://arxiv.org). 
+They use the multi-tapers, multi-scale estimators (with Hermite wavelets tapers) introduced in [''Estimating the hyperunformity exponent''](https://arxiv.org). 
 
 ## Companion paper 
 
