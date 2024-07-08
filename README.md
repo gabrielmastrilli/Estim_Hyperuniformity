@@ -22,7 +22,20 @@ Finally, it provides scripts that has been used in the associated research paper
 
 This project serves as a companion code for the research paper titled [''Estimating the hyperunformity exponent''](https://arxiv.org).
 
-In this paper, we develop a multi-scale, multi-taper estimator the hyperuniformity exponent and analyze its asymptotic behavior : consistency, asymptotic confidence intervals  We provide insights into the influence of tapers on the bias-variance trade-off of the estimator. Finally, we investigate its performance through simulations (whose scripts are in the [./companion_paper](./companion_paper) folder) , and we apply our method to the analysis of hyperuniformity in a real dataset of marine algae.
+In this paper, we develop multi-scale, multi-taper estimators the hyperuniformity exponent and analyze its asymptotic behavior : consistency, asymptotic confidence intervals  We provide insights into the influence of tapers on the bias-variance trade-off of the estimator. Finally, we investigate its performance through simulations, and we apply our method to the analysis of hyperuniformity in a real dataset of marine algae.
+
+### Content
+
+In [./compute_estimators](./compute_estimators), we provide functions to compute estimators of the hyperuniformity exponent introduced in [''Estimating the hyperunformity exponent''](https://arxiv.org) and its associated asymptotic confident intervals.
+
+- ``compute_alpha_hat.py``: compute the estimators of the hyperuniformity exponent for point processes in dimension 2, using Hermites wavelets, and compute the regression curve leading to its estimator (refer to [''Estimating the hyperunformity exponent''](https://arxiv.org), Section 4). 
+- ``compute_confident_interval``: compute the covariance matrices used for the confident intervals and estimate the quantile of the asymptotic distribution (refer to [''Estimating the hyperunformity exponent''](https://arxiv.org), Section 3.4).
+
+In [./tutorial](./tutorial) we provide tutorial for using compute_alpha_hat.py
+
+We provide three tutorial Jupyter Notebooks available in the [./notebooks](./notebooks) folder.
+(whose scripts are in the [./companion_paper](./companion_paper) folder)
+
 
 
 
