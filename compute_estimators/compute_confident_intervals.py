@@ -200,7 +200,7 @@ def estimate_quantile_cov_R(q_1, q_2, r, alpha, J, i_min, i_max):
 
 def estimate_quantile_ind(q_1, q_2, r, alpha, J, i_min, i_max):
     """
-    Compute the theorical quantiles of order q_1 and q_2 of alpha_hat, using the asymptotic covariance matrix Sigma.
+    Compute the theorical quantiles of order q_1 and q_2 of alpha_hat - alpha, using the asymptotic covariance matrix Sigma.
     """
     print("Computation cov matrix: start")
     if os.path.exists("data/cov/sig_alpha_"+str(alpha)+"_r_"+str(r)+"_jmin_"+str(np.min(J))+"_jmax"+str(np.max(J))+"_imin_"+str(i_min)+"_imax_"+str(i_max)+".txt") == False:
@@ -245,64 +245,21 @@ def estimate_quantile_ind(q_1, q_2, r, alpha, J, i_min, i_max):
         T_.append(T)
     return np.quantile(T_, q_1)/np.log(r), np.quantile(T_, q_2)/np.log(r)
 
-compute_coverage_R == False:
-compute_coverage_ind == False:
+def compute_confident_interval(q_1, q_2, r, alpha_hat, J, i_min, i_max):
+    """
+    Compute the asymptotic confidence intervals of order q_2 - q_1:
 
-if compute_coverage_R:
-    #Compute the coverage probability for the parameters used for estimating alpha for perturbed lattices using the non asymptotic covariance matrix.
+    [alpha_hat - F^{-1}(q_2; alpha_hat)/log(r), alpha_hat -F^{-1}(q_1; alpha_hat)/log(r)],
 
-    alphas = [0.5, 1, 1.5]
-    # Side length of the observation windows [-R, R]^2
-    Rs = [40, 35, 30, 25, 20, 15]
-    #Lower bound for the scales used for estimating alpha
-    j_min = [0.45, 0.5, 0.5, 0.55, 0.6, 0.65]
-    i_min = 0
-    i_max = 10
-    p_insides = np.zeros((len(alphas), len(Rs)))
-    for i_alpha in range(len(alphas)):
-        alpha = alphas[i_alpha]
-        for i_R in range(len(Rs)):
-            R = Rs[i_R]
-            J = np.linspace(j_min[i_R], 1)
-            print(alpha, R)
-            alpha_hats = np.loadtxt("data/alpha_"+str(alpha)+"_R_"+str(R)+".txt")
-            q_1, q_2 =  estimate_quantile_cov_R(0.025, 0.975, R, alpha, J, i_min, i_max)
-            print(q_1, q_2)
-            n_inside = 0
-            for alpha_hat in alpha_hats:
-                if alpha_hat > alpha + q_1 and alpha_hat < alpha+q_2:
-                    n_inside +=1
-            p_inside = n_inside/500
-            print(p_inside)
-            p_insides[i_alpha, i_R]= p_inside
-    np.savetxt("data/nb_inside.txt", p_insides)
-    print(p_inside)
+    when alpha_hat has been estimated with scales J and with Hermites functions indexed by I = \{i = (i_x, i_y) in N^2| i_min =< i_x, i_y < i_max and i_x or i_y is odd.
 
-if compute_coverage_ind:
-    #Compute the coverage probability for the parameters used for estimating alpha for perturbed lattices using the asymptotic covariance matrix.
-    alphas = [0.5, 1, 1.5]
-    # Side length of the observation windows [-R, R]^2
-    Rs = [40, 35, 30, 25, 20, 15]
-    #Lower bound for the scales used for estimating alpha
-    j_min = [0.45, 0.5, 0.5, 0.55, 0.6, 0.65]
-    i_min = 0
-    i_max = 10
-    p_insides = np.zeros((len(alphas), len(Rs)))
-    for i_alpha in range(len(alphas)):
-        alpha = alphas[i_alpha]
-        for i_R in range(len(Rs)):
-            R = Rs[i_R]
-            J = np.linspace(j_min[i_R], 1)
-            print(alpha, R)
-            alpha_hats = np.loadtxt("data/alpha_"+str(alpha)+"_R_"+str(R)+".txt")
-            q_1, q_2 =  estimate_quantile_ind(0.025, 0.975, R, alpha, J, i_min, i_max)
-            print(q_1, q_2)
-            n_inside = 0
-            for alpha_hat in alpha_hats:
-                if alpha_hat > alpha + q_1 and alpha_hat < alpha+q_2:
-                    n_inside +=1
-            p_inside = n_inside/500
-            print(p_inside)
-            p_insides[i_alpha, i_R]= p_inside
-    np.savetxt("data/nb_inside_ind.txt", p_insides)
-    print(p_inside)
+    Warning:
+
+    Computation time can be long when i_max - i_min and/or |J| is large. For i_min = 0 and i_max = 10, and |J|= 50, the computation took 1.5 hours on a standard computer. For the previous setting the matrix contains approximately 14 000 000 millions coefficients.
+
+    To reduce the computation time, we recommand to use fewer scales (for example |J| = 20).
+    """
+
+    q_q_1, q_q_2 = estimate_quantile_cov_R(q_1, q_2, r, alpha_hat, J, i_min, i_max)
+    return alpha_hat - q_q_2, alpha_hat - q_q_1
+
