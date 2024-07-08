@@ -33,13 +33,23 @@ In [./compute_estimators](./compute_estimators), we provide functions to compute
 
 In [./tutorial](./tutorial) we provide tutorial for using ``compute_alpha_hat.py`` and ``compute_confident_interval`.
 
-- ``tutorial.py``: estimate the hyperuniformity exponent for 1. a Poisson point process 2. a perturbed lattice and 3. compute an asymptotic confident interval for associated to one estimation of the hyperuniformity exponent of a Poisson point process.
+- ``tutorial.py``: estimate the hyperuniformity exponent for a Poisson point process, a perturbed lattice and compute an asymptotic confident interval for associated to one estimation of the hyperuniformity exponent of a Poisson point process.
 
-- ``generate_pp.py`` : sample (two dimensional) Poisson point processes and cloaked perturbed lattice by stable distribution.
+- ``generate_pp.py`` : sample (two dimensional) Poisson point processes and cloaked perturbed lattice by stable distributions.
 
-  In [./tutorial](./tutorial) we provide the script that has been used for the figure of Section 4 of the companion paper.
+In [./tutorial](./tutorial) we provide the scripts and the data that has been used for creating the figures of Section 4 of the companion paper.
 
+## How to cite this work
 
+  ```bash
+  @preprint{mastrilli2024alpha,
+    arxivid = {},
+    journal = {arXiv},
+    title = {Estimating the hyperuniformity exponent of a point process},
+    author = {Mastrilli, Gabriel and B\l{}aszczyszyn, Bartlomiej and Lavancier, Fr\'ed\'eric}, 
+    year    = {2024},
+  }
+  ```
 
 
 
