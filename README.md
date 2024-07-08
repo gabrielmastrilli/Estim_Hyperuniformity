@@ -37,7 +37,7 @@ In [./tutorial](./tutorial) we provide tutorial for using ``compute_alpha_hat.py
 
 - ``generate_pp.py`` : sample (two dimensional) Poisson point processes and cloaked perturbed lattice by stable distributions.
 
-In [./tutorial](./tutorial) we provide the scripts and the data that has been used for creating the figures of Section 4 of the companion paper.
+In [./companion_paper](./companion_paper) we provide the scripts and the data that has been used for creating the figures of Section 4 of the companion paper.
 
 ## How to cite this work
 
