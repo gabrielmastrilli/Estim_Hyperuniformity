@@ -149,11 +149,11 @@ def cov_matrix(r, alpha, J, i_min, i_max):
 
 def quantile_non_asymptotic(q_1, q_2, r, alpha, J, i_min, i_max):
     """
-    Compute the theorical quantiles of order q_1 and q_2 of alpha_hat, using the non asymptotic covariance matrix Sigma_R.
+    Compute the theorical quantiles of order q_1 and q_2 of alpha_hat, using the non asymptotic covariance matrix Sigma_R defined in Propostion 3.14.
     """
     print("Computation cov matrix: start")
     if os.path.exists("data/cov/sig_alpha_"+str(alpha)+"_r_"+str(r)+"_jmin_"+str(np.min(J))+"_jmax"+str(np.max(J))+"_imin_"+str(i_min)+"_imax_"+str(i_max)+".txt") == False:
-        Sig = compute_cov_matrix(r, alpha, J, i_min, i_max)
+        Sig = cov_matrix(r, alpha, J, i_min, i_max)
         np.savetxt("data/cov/sig_alpha_"+str(alpha)+"_r_"+str(r)+"_jmin_"+str(np.min(J))+"_jmax"+str(np.max(J))+"_imin_"+str(i_min)+"_imax_"+str(i_max)+".txt", Sig)
     else:
         print("Already computed. Loading...")
@@ -204,7 +204,7 @@ def quantile_asymptotic(q_1, q_2, r, alpha, J, i_min, i_max):
     """
     print("Computation cov matrix: start")
     if os.path.exists("data/cov/sig_alpha_"+str(alpha)+"_r_"+str(r)+"_jmin_"+str(np.min(J))+"_jmax"+str(np.max(J))+"_imin_"+str(i_min)+"_imax_"+str(i_max)+".txt") == False:
-        Sig = compute_cov_matrix(r, alpha, J, i_min, i_max)
+        Sig = cov_matrix(r, alpha, J, i_min, i_max)
         np.savetxt("data/cov/sig_alpha_"+str(alpha)+"_r_"+str(r)+"_jmin_"+str(np.min(J))+"_jmax"+str(np.max(J))+"_imin_"+str(i_min)+"_imax_"+str(i_max)+".txt", Sig)
     else:
         print("Already computed. Loading...")
@@ -225,7 +225,7 @@ def quantile_asymptotic(q_1, q_2, r, alpha, J, i_min, i_max):
     Sig12_ind = np.real(lg.sqrtm(Sig[:len(I_), :len(I_)]))
     print("Cholesky decomposition: ok")
 
-     #Number of independent realization of the theoritical limit distribution used to  estimate the quantiles of alpha_hat
+    #Number of independent realization of the theoritical limit distribution used to  estimate the quantiles of alpha_hat
     N_sim = 10000
     T_ = []
     denom_W = (len(J)*np.sum(np.power(np.array(J),2)) - np.power(np.sum(np.array(J)), 2))
