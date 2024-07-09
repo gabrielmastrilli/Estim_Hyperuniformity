@@ -22,18 +22,19 @@ i_min = 0
 i_max = 10
 
 #Compute and plot of the curve C
-L_j, r = compute_alpha_hat.compute_wavelet_transforms(Phi, J, i_min, i_max)
-plt.plot(J, np.log(L_j)/np.log(r))
+L_j, r = alpha_hat.wavelet_transform(Phi, J, i_min, i_max)
+C_j =  np.log(L_j)/np.log(r)
+plt.plot(J, C_j)
 
 #The set of scales used for estimating alpha with a linear regression
-J = np.linspace(0.5, 1)
+J_alpha= np.linspace(0.5, 1)
 
 #Compute and print of alpha hat.
-alpha_hat = compute_alpha_hat.compute_alpha(Phi, J, i_min, i_max)
+alpha_hat = alpha_hat.alpha_hat(Phi, J_alpha, i_min, i_max)
 print(alpha_hat)
 
-plt.vlines(np.min(J), np.min(np.log(L_j)/np.log(r)), np.max(np.log(L_j)/np.log(r)),color = 'k')
-plt.vlines(np.max(J), np.min(np.log(L_j)/np.log(r)), np.max(np.log(L_j)/np.log(r)), color = 'k')
+plt.vlines(np.min(J), np.min(C_j), np.max(C_j),color = 'k')
+plt.vlines(np.max(J), np.min(C_j), np.max(C_j), color = 'k')
 
 plt.xlabel("j")
 plt.ylabel("$\mathcal{C}$")
@@ -79,11 +80,12 @@ J = np.linspace(0.2, 1.4, num = 100)
 i_min = 0
 i_max = 10
 L_j, r = compute_alpha_hat.compute_wavelet_transforms(Phi, J, i_min, i_max)
-plt.plot(J, np.log(L_j)/np.log(r))
+C_j = np.log(L_j)/np.log(r)
+plt.plot(J, C_j)
 
 #The set of scales used for estimating alpha with a linear regression
-J = np.linspace(0.45, 1)
-alpha_hat = compute_alpha_hat.compute_alpha(Phi, J, i_min, i_max)
+J_alpha = np.linspace(0.45, 1)
+alpha_hat = alpha_hat.alpha_hat(Phi, J_alpha, i_min, i_max)
 print(alpha_hat)
 
 plt.vlines(np.min(J), np.min(np.log(L_j)/np.log(r)), np.max(np.log(L_j)/np.log(r)),color = 'k')
@@ -93,8 +95,6 @@ plt.xlabel("j")
 plt.ylabel("$\mathcal{C}$")
 
 plt.title("$\widehat{\\alpha} = $" +str(alpha_hat)[:8])
-plt.show()
-
 plt.show()
 
 ### Example: computation of the asymptotic confidence interval for a poisson point process.
@@ -117,11 +117,11 @@ i_max = 7
 J = np.linspace(0.5, 1, num = 20)
 
 #Compute and print of alpha hat.
-alpha_hat = compute_alpha_hat.compute_alpha(Phi, J, i_min, i_max)
+alpha_hat = alpha_hat.alpha_hat(Phi, J, i_min, i_max)
 print(alpha_hat)
 
 q_1 = 0.025
 q_2 = 0.975
-a, b = compute_confident_intervals.compute_confident_interval(q_1, q_2, R, alpha_hat, J, i_min, i_max)
+a, b = confidence_intervals.confidencd_interval_cov_R(q_1, q_2, R, alpha_hat, J, i_min, i_max)
 print("Asymptotic confidence intervals \n")
 print("["+str(a)[:6]+", "+str(b)[:6]+"]")
