@@ -10,7 +10,7 @@ We provide functions for computing estimators of the hyperuniformity exponent, f
 
 - `psi(x, n)` : compute the value at x of the n-th one-dimensional Hermite wavelet.
 
-## Content of ``confident_interval.py``
+## Content of ``confidence_interval.py``
 
 - `cov_matrix(r, alpha, J, i_min, i_max)`: computes the covariance matrix of Proposition 3.14 of the companion paper, for an observation window $`[-r, r]^2`$, using the set of scales J and centered Hermite wavelets of indexes with components between i_min and i_max -1 (refer to Section 4.1 of the companion paper). For details about computation of this matrix, we refer to Section 5.7.
 
