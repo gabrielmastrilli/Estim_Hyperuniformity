@@ -12,8 +12,7 @@ from tutorial import generate_pp
 # alpha is the hyperuniformity exponent
 # sig is a parameter related to the strengh of the perturbation
 alphas = [0.5, 1, 1.5]
-#sigs = [0.15, 0.25, 0.35]
-sigs = [0.15, 0.3, 0.35]
+sigs = [0.15, 0.25, 0.35]
 
 # Side length of the observation windows [-R, R]^2
 Rs = [40, 35, 30, 25, 20, 15]
