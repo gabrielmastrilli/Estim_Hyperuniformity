@@ -1,8 +1,8 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-from compute_estimators import compute_confident_intervals
-from compute_estimators  import compute_alpha_hat
+from compute_estimator import confidence_interval
+from compute_estimator  import alpha_hat
 from tutorial import generate_pp
 
 ### Example: estimation for a poisson point process.
@@ -122,6 +122,6 @@ print(alpha_hat)
 
 q_1 = 0.025
 q_2 = 0.975
-a, b = confidence_intervals.confidencd_interval_cov_R(q_1, q_2, R, alpha_hat, J, i_min, i_max)
+a, b = confidence_interval.confidence_interval_cov_R(q_1, q_2, R, alpha_hat, J, i_min, i_max)
 print("Asymptotic confidence intervals \n")
 print("["+str(a)[:6]+", "+str(b)[:6]+"]")
