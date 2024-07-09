@@ -10,7 +10,7 @@ Finally, it provides the scripts that have been used for creating the figures of
 
 ## Dependencies
 
-- `EstimHyperuniformityAlpha` works with [![Python >=3.8,<3.10](https://img.shields.io/badge/python->=3.8,<3.10-blue.svg)](https://www.python.org/downloads/release/python-371/).
+- `Estim_Hyperuniformity` works with [![Python >=3.8,<3.10](https://img.shields.io/badge/python->=3.8,<3.10-blue.svg)](https://www.python.org/downloads/release/python-371/).
 
 - ``figure_match.py`` requires the Python package `structure-factor` (https://github.com/For-a-few-DPPs-more/structure-factor) for sampling matching point processes. 
 
