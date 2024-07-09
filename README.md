@@ -24,9 +24,9 @@ In this paper, we develop a multi-scale, multi-taper estimator of the hyperunifo
 
 ### Content
 
-- In [./compute_estimators](./compute_estimators), we provide functions to compute the estimator of the hyperuniformity exponent, along with its associated asymptotic confidence intervals, given a point pattern.
+- In [./compute_estimator](./compute_estimator), we provide functions to compute the estimator of the hyperuniformity exponent, along with its associated asymptotic confidence intervals, given a point pattern.
 
-- In [./tutorial](./tutorial), we provide tutorial for using the functions of the [./compute_estimators](./compute_estimators) folder. We also provide functions for sampling the point processes of the tutorial.
+- In [./tutorial](./tutorial), we provide tutorial for using the functions of the [./compute_estimator](./compute_estimator) folder. We also provide functions for sampling the point processes of the tutorial.
 
 - In [./companion_paper](./companion_paper), we provide the scripts and the data that have been used for creating the figures of the companion paper.
 
