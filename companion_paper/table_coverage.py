@@ -1,4 +1,5 @@
 import numpy as np
+from alpha_hat import confidence_interval
 
 ### Table of the coverage of alpha_hat for perturbed lattices.
 
@@ -25,7 +26,7 @@ if compute_coverage_R:
             print(alpha, R)
             alpha_hats = np.loadtxt("data/alpha_"+str(alpha)+"_R_"+str(R)+".txt")
             #Compute the quantiles of order q_1 = 0.025 and q_2 = 0.975 of log(R)(alpha_hat - alpha).
-            q_1, q_2 =  estimate_quantile_cov_R(0.025, 0.975, R, alpha, J, i_min, i_max)
+            q_1, q_2 =  confidence_interval.quantile_cov_R(0.025, 0.975, R, alpha, J, i_min, i_max)
             print(q_1, q_2)
             n_inside = 0
             for alpha_hat in alpha_hats:
