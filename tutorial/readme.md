@@ -1,10 +1,10 @@
 # Tutorial
 
 ## Content
-We provide three tutorials in the python file ``tutorial.py``. 
+The python file ``tutorial.py`` contains three examples:
 
-- one for estimating the hyperuniformity exponent of a Poisson point process in dimension two
-- one for estimating the hyperuniformity exponent of a cloacked and perturbed lattice by stable distribution in dimension two
+- the first one estimates the hyperuniformity exponent of a Poisson point process in dimension two and plot the associated regression curve,
+- the second one focuses on a cloacked and perturbed lattice by stable distribution in dimension two for which a prescribed hyperuniformity exponent can be set,
 - one for computing the asymptotic confidence interval associated to one estimation of the hyperuniformity exponent for a Poisson point process.
 
 They use the multi-tapers, multi-scale estimators (with Hermite wavelets tapers) introduced in [''Estimating the hyperunformity exponent''](https://arxiv.org). 
