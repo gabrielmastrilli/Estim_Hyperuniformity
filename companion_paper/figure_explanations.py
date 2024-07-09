@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 plt.rcParams.update({'font.size': 13})
 
-from compute_estimators  import compute_alpha_hat
+from alpha_hat  import alpha_hat
 from tutorial import generate_pp
 
 ### Explication RSA
@@ -35,7 +35,7 @@ i_min = 0
 i_max = 10
 
 
-L_j, r = compute_alpha_hat.compute_wavelet_transforms(Phi, J, i_min, i_max)
+L_j, r = alpha_hat.wavelet_transform(Phi, J, i_min, i_max)
 
 #Small scale portion of the curve
 j_0 = 0
@@ -120,7 +120,7 @@ L_j_poisson_mean = np.zeros(len(J))
 #We average the curves corresponding to independents realization.
 for i in range(n_sim_poisson):
     print(i)
-    L_j_poisson, r_poisson = compute_alpha_hat.compute_wavelet_transforms(generate_pp.PPP(r), J, i_min, i_max)
+    L_j_poisson, r_poisson = alpha_hat.wavelet_transform(generate_pp.PPP(r), J, i_min, i_max)
     L_j_poisson_mean += np.log(L_j_poisson)/np.log(r)
 
 plt.plot(J, L_j_poisson_mean/n_sim_poisson, color = 'g', linestyle = "dotted")
@@ -160,7 +160,7 @@ i_min = 0
 i_max = 10
 
 
-L_j, r = compute_alpha_hat.compute_wavelet_transforms(Phi, J, i_min, i_max)
+L_j, r = alpha_hat.alpha_hat(Phi, J, i_min, i_max)
 
 #Small scale portion of the curve
 j_0 = 0
@@ -245,7 +245,7 @@ L_j_poisson_mean = np.zeros(len(J))
 #We average the curves corresponding to independents realization.
 for i in range(n_sim_poisson):
     print(i)
-    L_j_poisson, r_poisson = compute_alpha_hat.compute_wavelet_transforms(generate_pp.PPP(r), J, i_min, i_max)
+    L_j_poisson, r_poisson = alpha_hat.wavelet_transform(generate_pp.PPP(r), J, i_min, i_max)
     L_j_poisson_mean += np.log(L_j_poisson)/np.log(r)
 
 plt.plot(J, L_j_poisson_mean/n_sim_poisson, color = 'g', linestyle = "dotted")
