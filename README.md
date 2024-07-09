@@ -6,7 +6,7 @@
 
 `Estim_Hyperuniformity` currently contains Python functions that allows for computing the estimator of the hyperuniformity exponent of point processes, and its associated asymptotic confidence interval. It also contains Python functions for sampling hyperuniform perturbed lattices with prescribed hyperuniformity exponent. 
 
-Finally, it provides the scripts that has been used for creating the figures of the associated research paper titled [''Estimating the hyperunformity exponent''](https://arxiv.org).
+Finally, it provides the scripts that have been used for creating the figures of the associated research paper titled [''Estimating the hyperunformity exponent''](https://arxiv.org).
 
 ## Dependencies
 
