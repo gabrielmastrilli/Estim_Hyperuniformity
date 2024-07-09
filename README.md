@@ -4,7 +4,7 @@
 
 ## Introduction
 
-`Estim_Hyperuniformity` currently contains Python functions that allows for computing estimators of the hyperuniformity exponent of point processes, and associated asymptotic confidence intervals. It also contains Python functions for sampling hyperuniform perturbed lattices with prescribed hyperuniformity exponent. 
+`Estim_Hyperuniformity` currently contains Python functions that allows for computing the estimator of the hyperuniformity exponent of point processes, and its associated asymptotic confidence interval. It also contains Python functions for sampling hyperuniform perturbed lattices with prescribed hyperuniformity exponent. 
 
 Finally, it provides the scripts that has been used for creating the figures of the associated research paper titled [''Estimating the hyperunformity exponent''](https://arxiv.org).
 
@@ -20,22 +20,15 @@ Finally, it provides the scripts that has been used for creating the figures of 
 
 This project serves as a companion code for the research paper titled [''Estimating the hyperunformity exponent''](https://arxiv.org).
 
-In this paper, we develop multi-scale, multi-taper estimators of the hyperuniformity exponent and we analyze its asymptotic behavior: consistency, asymptotic confidence intervals. We also provide insights into the influence of tapers on the bias-variance trade-off of the estimator. Finally, we investigate its performance through simulations, and we apply our method to the analysis of hyperuniformity in a real dataset of marine algae.
+In this paper, we develop a multi-scale, multi-taper estimator of the hyperuniformity exponent and we analyze its asymptotic behavior: consistency, asymptotic confidence intervals. We also provide insights into the influence of tapers on the bias-variance trade-off of the estimator. Finally, we investigate its performance through simulations, and we apply our method to the analysis of hyperuniformity in a real dataset of marine algae.
 
 ### Content
 
-1. In [./compute_estimators](./compute_estimators), we provide functions to compute estimators of the hyperuniformity exponent also with its associated asymptotic confidence intervals, given a point pattern.
+- In [./compute_estimators](./compute_estimators), we provide functions to compute the estimator of the hyperuniformity exponent, along with its associated asymptotic confidence intervals, given a point pattern.
 
-- ``compute_alpha_hat.py``: compute the estimators of the hyperuniformity exponent for point processes in dimension two, using Hermites wavelets, and compute the regression curve leading to its estimator (refer to Section 4 of the companion paper). 
-- ``compute_confident_interval``: compute the covariance matrices used for the confident intervals and estimate the quantile of the asymptotic distribution (refer to Section 3.4  of the companion paper).
+- In [./tutorial](./tutorial), we provide tutorial for using the functions of the [./compute_estimators](./compute_estimators) folder. We also provide functions for sampling the point processes of the tutorial.
 
-2. In [./tutorial](./tutorial), we provide tutorial for using ``compute_alpha_hat.py`` and ``compute_confident_interval``. We also provide function for sampling the point processes of the tutorial.
-
-- ``tutorial.py``: estimate the hyperuniformity exponent for a Poisson point process, a perturbed lattice and compute an asymptotic confident interval for associated to one estimation of the hyperuniformity exponent of a Poisson point process.
-
-- ``generate_pp.py`` : sample (two dimensional) Poisson point processes and cloaked perturbed lattice by stable distributions.
-
-3. In [./companion_paper](./companion_paper), we provide the scripts and the data that has been used for creating the figures of the companion paper.
+- In [./companion_paper](./companion_paper), we provide the scripts and the data that have been used for creating the figures of the companion paper.
 
 ## How to cite this work
 
