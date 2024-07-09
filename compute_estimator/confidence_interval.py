@@ -272,8 +272,8 @@ def confidence_interval_cov_asymptotic(q_1, q_2, r, alpha_hat, J, i_min, i_max):
     and where F^{-1}(q_2; alpha_hat) is the quantile of order q_2 of the random variable 
     Warning:
 
+    Note that this function has been implemented only for comparison with `confidence_interval_cov_R` and should not be used as it could lead to non accurate confidence intervals for non really large point patterns (refer to the discussion of the end of Section 4.2 of the companion paper)
     Computation time can be long when i_max - i_min and/or |J| is large. For i_min = 0 and i_max = 10, and |J|= 50, the computation took 1.5 hours on a standard computer. For the previous setting the matrix contains approximately 14 000 000 millions coefficients.
-
     To reduce the computation time, we recommand to use fewer scales (for example |J| = 20).
     """
 
