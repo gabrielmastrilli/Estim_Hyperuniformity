@@ -22,9 +22,9 @@ for i in range(1, len(co_h)):
     cs_h[i] = u
 
 
-#Computation of alpha
+#Computation of alpha_hat
 
-def compute_alpha(Phi, J,  i_min, i_max):
+def alpha_hat(Phi, J,  i_min, i_max):
     """
     Entries:
 
@@ -52,7 +52,7 @@ def compute_alpha(Phi, J,  i_min, i_max):
 
     """
 
-    L_j, r = compute_wavelet_transforms(Phi, J, i_min, i_max)
+    L_j, r = wavelet_transform(Phi, J, i_min, i_max)
     denom_W = (len(J)*np.sum(np.power(np.array(J),2)) - np.power(np.sum(np.array(J)), 2))
     sum_J = np.sum(np.array(J))
     slope_hat = 0
@@ -61,14 +61,14 @@ def compute_alpha(Phi, J,  i_min, i_max):
     return 2 - slope_hat
 
 
-def compute_wavelet_transforms(Phi, J, i_min, i_max):
+def wavelet_transform(Phi, J, i_min, i_max):
     """
     Entries:
 
     Phi is a numpy array of size (number of points, 2); Phi[:, 0] is the x-coordinate of the points
     J is a numpy array of size (number of scale); J is the set of scale
 
-    The hermites functions that will be used are of index i = (i_1, i_2) in I with i_min <= min(i_1,i_2) <= max(i_1, i_2) <= i_max and i_1 or i_2 odd.
+    The Hermite functions that will be used are of index i = (i_1, i_2) in I with i_min <= min(i_1,i_2) <= max(i_1, i_2) <= i_max and i_1 or i_2 odd.
 
 
     Return:
