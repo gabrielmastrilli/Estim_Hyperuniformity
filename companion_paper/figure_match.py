@@ -11,7 +11,7 @@ from structure_factor.spatial_windows import BoxWindow
 from structure_factor.utils import meshgrid_to_column_matrix
 from structure_factor.point_processes import HomogeneousPoissonPointProcess
 
-from compute_estimators  import compute_alpha_hat
+from alpha_hat  import alpha_hat
 
 
 ### Creating points pattern of matched point process and estimating alpha with 75 tapers and 16 tapers
@@ -81,7 +81,7 @@ for i_intens in range(len(intenss)):
             Phi = match(R, intens)
 
             #Estimate alpha for this realization
-            alpha_hat.append(compute_alpha_hat.compute_alpha(Phi, J, i_min, i_max))
+            alpha_hat.append(alpha_hat.alpha_hat(Phi, J, i_min, i_max))
 
 
             print(alpha_hat[-1], np.mean(alpha_hat), np.std(alpha_hat))
@@ -105,7 +105,7 @@ if os.path.exists("data/match_intens_"+str(intens)+"_16.txt") == False:
     for i in range(n_sim):
         print(i, intens, i_max)
         Phi = match(R, intens)
-        alpha_hat.append(compute_alpha_hat.compute_alpha(Phi, J, i_min, i_max))
+        alpha_hat.append(alpha_hat.alpha_hat(Phi, J, i_min, i_max))
         print(alpha_hat[-1], np.mean(alpha_hat), np.std(alpha_hat))
         print("\n")
     np.savetxt("data/match_intens_"+str(intens)+"_16.txt", alpha_hat)
