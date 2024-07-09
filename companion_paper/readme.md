@@ -1,9 +1,9 @@
 
 # Companion paper
 
-## Content
+We provide scripts and data that have been used for creating the figures of Section 4 of the companion paper [''Estimating the hyperunformity exponent''](https://arxiv.org).
 
-We provide scripts that have been used for creating the figures of Section 4 of the companion paper [''Estimating the hyperunformity exponent''](https://arxiv.org).
+## Content
 
 - ``figure_explanations.py``corresponds to Figure 1, that provides examples of estimation of the hyperuniformity exponent for a Ginibre point process and for a RSA point process. It uses pre-computed realisation of these two point processes, that have been stored in the [./data/point_patterns](./data/point_patterns) folder.
 
