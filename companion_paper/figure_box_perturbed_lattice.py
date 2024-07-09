@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 plt.rcParams.update({'font.size': 15})
 import os
 
-from compute_estimators  import compute_alpha_hat
+from alpha_hat  import alpha_hat
 from tutorial import generate_pp
 
 ### Creating points pattern of perturbed lattices and estimating alpha
@@ -47,7 +47,7 @@ for i_R in range(len(Rs)):
                 Phi = generate_pp.perturbed_latt(R, alpha, sigs[i_alpha])
 
                 #Estimate alpha for this realization
-                alpha_hat.append(compute_alpha_hat.compute_alpha(Phi, J, i_min, i_max))
+                alpha_hat.append(alpha_hat.alpha_hat(Phi, J, i_min, i_max))
 
                 print(alpha_hat[-1], np.mean(alpha_hat), np.std(alpha_hat))
                 print("\n")
