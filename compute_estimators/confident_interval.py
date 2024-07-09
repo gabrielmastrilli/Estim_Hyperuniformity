@@ -63,7 +63,7 @@ def P(p, q):
             return a
 
 
-def compute_cov_matrix(r, alpha, J, i_min, i_max):
+def cov_matrix(r, alpha, J, i_min, i_max):
     """
     Using the Proposition 5.13 of the companion paper, compute the coefficient of the matrix:
     Sig[i_1,i_2, j_1, j_2] = r^{(d+alpha)(j_1 +j_2)/2} int psi_{i_1}(r^{j_1} x) conjugate{psi_{i_2}(r^{j_2} x)} |x|^{alpha}, (j_1, j_2) in J^2 and (i_1, i_2) in I, where I = \{i = (i_x, i_y) in N^2| i_min =< i_x, i_y < i_max and i_x or i_y is odd.
@@ -147,7 +147,7 @@ def compute_cov_matrix(r, alpha, J, i_min, i_max):
     return S_
 
 
-def estimate_quantile_cov_R(q_1, q_2, r, alpha, J, i_min, i_max):
+def quantile_non_asymptotic(q_1, q_2, r, alpha, J, i_min, i_max):
     """
     Compute the theorical quantiles of order q_1 and q_2 of alpha_hat, using the non asymptotic covariance matrix Sigma_R.
     """
@@ -198,7 +198,7 @@ def estimate_quantile_cov_R(q_1, q_2, r, alpha, J, i_min, i_max):
 
     return np.quantile(T_, q_1)/np.log(r), np.quantile(T_, q_2)/np.log(r)
 
-def estimate_quantile_ind(q_1, q_2, r, alpha, J, i_min, i_max):
+def quantile_asymptotic(q_1, q_2, r, alpha, J, i_min, i_max):
     """
     Compute the theorical quantiles of order q_1 and q_2 of alpha_hat - alpha, using the asymptotic covariance matrix Sigma.
     """
@@ -245,7 +245,7 @@ def estimate_quantile_ind(q_1, q_2, r, alpha, J, i_min, i_max):
         T_.append(T)
     return np.quantile(T_, q_1)/np.log(r), np.quantile(T_, q_2)/np.log(r)
 
-def compute_confident_interval(q_1, q_2, r, alpha_hat, J, i_min, i_max):
+def confidence_interval_cov_R(q_1, q_2, r, alpha_hat, J, i_min, i_max):
     """
     Compute the asymptotic confidence intervals of order q_2 - q_1:
 
@@ -260,6 +260,23 @@ def compute_confident_interval(q_1, q_2, r, alpha_hat, J, i_min, i_max):
     To reduce the computation time, we recommand to use fewer scales (for example |J| = 20).
     """
 
-    q_q_1, q_q_2 = estimate_quantile_cov_R(q_1, q_2, r, alpha_hat, J, i_min, i_max)
+    q_q_1, q_q_2 = quantile_non_asymptotic(q_1, q_2, r, alpha_hat, J, i_min, i_max)
+    return alpha_hat - q_q_2, alpha_hat - q_q_1
+
+def confidence_interval_cov_asymptotic(q_1, q_2, r, alpha_hat, J, i_min, i_max):
+    """
+    Compute the asymptotic confidence intervals of order q_2 - q_1 of the Corollary 3.10 of the companion paper:
+    
+    [alpha_hat - F^{-1}(q_2; alpha_hat)/log(r), alpha_hat -F^{-1}(q_1; alpha_hat)/log(r)]
+    when alpha_hat has been estimated with scales J and with Hermites functions indexed by I = \{i = (i_x, i_y) in N^2| i_min =< i_x, i_y < i_max and i_x or i_y is odd.
+    and where F^{-1}(q_2; alpha_hat) is the quantile of order q_2 of the random variable 
+    Warning:
+
+    Computation time can be long when i_max - i_min and/or |J| is large. For i_min = 0 and i_max = 10, and |J|= 50, the computation took 1.5 hours on a standard computer. For the previous setting the matrix contains approximately 14 000 000 millions coefficients.
+
+    To reduce the computation time, we recommand to use fewer scales (for example |J| = 20).
+    """
+
+    q_q_1, q_q_2 = quantile_asymptotic(q_1, q_2, r, alpha_hat, J, i_min, i_max)
     return alpha_hat - q_q_2, alpha_hat - q_q_1
 
