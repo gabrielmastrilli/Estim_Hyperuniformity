@@ -20,7 +20,7 @@ Finally, it provides the scripts that have been used for creating the figures of
 
 This project serves as a companion code for the research paper titled [''Estimating the hyperunformity exponent''](https://arxiv.org).
 
-In this paper, we develop a multi-scale, multi-taper estimator of the hyperuniformity exponent and we analyze its asymptotic behavior: consistency, asymptotic confidence intervals. We also provide insights into the influence of tapers on the bias-variance trade-off of the estimator. Finally, we investigate its performance through simulations, and we apply our method to the analysis of hyperuniformity in a real dataset of marine algae.
+In this paper, we develop a multi-scale, multi-taper estimator of the hyperuniformity exponent and we analyze its asymptotic behavior such as consistency and asymptotic confidence intervals. We also provide insights into the influence of tapers on the bias-variance trade-off of the estimator. Finally, we investigate its performance through simulations, and we apply our method to the analysis of hyperuniformity in a real dataset of marine algae.
 
 ### Content
 
