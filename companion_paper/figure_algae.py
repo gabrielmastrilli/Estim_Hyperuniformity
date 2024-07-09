@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 plt.rcParams.update({'font.size': 13})
 import os
 
-from compute_estimators  import compute_alpha_hat
+from alpha_hat import alpha_hat
 from tutorial import generate_pp
 
 
@@ -18,14 +18,14 @@ i_min = 0
 i_max = 10
 
 nb_frame = 0
-for id in range(98):
+for id in range(100):
     print(id)
     if os.path.exists("data/point_patterns/algae_"+str(id)+".txt"):
         nb_frame+=1
         #Algae point pattern associated to the frame id
         Phi = np.loadtxt("data/point_patterns/algae_"+str(id)+".txt")
         #Compute and plot the curve C for the frame id
-        L_j, r = compute_alpha_hat.compute_wavelet_transforms(Phi, J, i_min, i_max)
+        L_j, r = alpha_hat.wavelet_transform(Phi, J, i_min, i_max)
         plt.plot(J, np.log(L_j)/np.log(r), linewidth = 0.1, color = 'k')
 
         L_j_mean+=np.array(np.log(L_j)/np.log(r))
@@ -109,7 +109,7 @@ L_j_poisson_mean = np.zeros(len(J))
 #We average the curves corresponding to independents realization.
 for i in range(n_sim_poisson):
     print(i)
-    L_j_poisson, r_poisson = compute_alpha_hat.compute_wavelet_transforms(generate_pp.PPP(r), J, i_min, i_max)
+    L_j_poisson, r_poisson = alpha_hat.wavelet_transform(generate_pp.PPP(r), J, i_min, i_max)
     L_j_poisson_mean += np.log(L_j_poisson)/np.log(r_poisson)
 
 plt.plot(J, L_j_poisson_mean/n_sim_poisson, color = 'g', linestyle = "dotted")
