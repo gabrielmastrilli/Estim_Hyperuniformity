@@ -33,7 +33,7 @@ In this paper, we develop a multi-scale, multi-taper estimator of the hyperunifo
 ## How to cite this work
 
   ```bash
-  @preprint{?,
+  @preprint{,
     arxivid = {},
     journal = {arXiv},
     title = {Estimating the hyperuniformity exponent of point processes},
