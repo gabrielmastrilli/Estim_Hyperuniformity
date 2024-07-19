@@ -11,12 +11,17 @@ We provide scripts and data that have been used for creating the figures of Sect
 
 -   ``table_coverage.py`` provides the script that has been used to create Table 1, that computes the coverage rates for perturbed lattices. Due to the computation of the covariance matrices it takes several hours to tun. 
 
-  - ``figure_match.py`` corresponds to Figure 3, that shows the distribution of the estimator of the hyperuniformity exponent when considering matched point processes. First part of the script generates the data. These data have been pre-computed and stored in the [./data](./data) folder so that the first part of the script is not necessary to run. Second part creates Figure 3. 
+  - ``figure_match.py`` corresponds to Figure 3, that shows the distribution of the estimator of the hyperuniformity exponent when considering matched point processes [[1]](#1). First part of the script generates the data. These data have been pre-computed and stored in the [./data](./data) folder so that the first part of the script is not necessary to run. Second part creates Figure 3. 
 
-- ``figure_algae.py`` corresponds to Figure 4, that estimates the hyperuniformity exponent for a system of marine algae studied in [[1]](#1). Positions of the points are in [./data/point_patterns](./data/point_patterns) folder.
+- ``figure_algae.py`` corresponds to Figure 4, that estimates the hyperuniformity exponent for a system of marine algae studied in [[2]](#2). Positions of the points are in [./data/point_patterns](./data/point_patterns) folder.
 
 - ## References
 <a id="1">[1]</a> 
+Andreas Klatt, M., Last, G., & Yogeshwaran, D. (2020).
+Hyperuniform and rigid stable matchings. 
+Random Structures & Algorithms, 57(2), 439-473.
+  
+<a id="2">[2]</a> 
 Huang, Mingji and Hu, Wensi and Yang, Siyuan and Liu, Quan-Xing and Zhang, HP (2021). 
 Circular swimming motility and disordered hyperuniform state in an algae system. 
 Proceedings of the National Academy of Sciences, 118(18), e2100493118.
