@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 plt.rcParams.update({'font.size': 13})
 import os
 
-from alpha_hat import alpha_hat
+from compute_estimator  import alpha_hat
 from tutorial import generate_pp
 
 
@@ -20,10 +20,10 @@ i_max = 10
 nb_frame = 0
 for id in range(100):
     print(id)
-    if os.path.exists("data/point_patterns/algae_"+str(id)+".txt"):
+    if os.path.exists("./companion_paper/data/point_patterns/algae/algae_"+str(id)+".txt"):
         nb_frame+=1
         #Algae point pattern associated to the frame id
-        Phi = np.loadtxt("data/point_patterns/algae_"+str(id)+".txt")
+        Phi = np.loadtxt("./companion_paper/data/point_patterns/algae/algae_"+str(id)+".txt")
         #Compute and plot the curve C for the frame id
         L_j, r = alpha_hat.wavelet_transform(Phi, J, i_min, i_max)
         plt.plot(J, np.log(L_j)/np.log(r), linewidth = 0.1, color = 'k')

@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 plt.rcParams.update({'font.size': 15})
 import os
 
-from alpha_hat  import alpha_hat
+from compute_estimator  import alpha_hat
 from tutorial import generate_pp
 
 ### Creating points pattern of perturbed lattices and estimating alpha
@@ -38,7 +38,7 @@ for i_R in range(len(Rs)):
 
         #If we haven't computed the estimated alphas for this set of parameter
         if os.path.exists("data/alpha_"+str(alpha)+"_R_"+str(R)+".txt") == False:
-            alpha_hat = []
+            alpha_est = []
             for i in range(n_sim):
                 print(i, alpha, R)
 
@@ -46,12 +46,12 @@ for i_R in range(len(Rs)):
                 Phi = generate_pp.perturbed_latt(R, alpha, sigs[i_alpha])
 
                 #Estimate alpha for this realization
-                alpha_hat.append(alpha_hat.alpha_hat(Phi, J, i_min, i_max))
+                alpha_est.append(alpha_hat.alpha_hat(Phi, J, i_min, i_max))
 
-                print(alpha_hat[-1], np.mean(alpha_hat), np.std(alpha_hat))
+                print(alpha_est[-1], np.mean(alpha_est), np.std(alpha_est))
                 print("\n")
 
-            np.savetxt("data/alpha_"+str(alpha)+"_R_"+str(R)+".txt", np.array(alpha_hat))
+            np.savetxt("./companion_paper/data/estim_perturbed_lattices/alpha_"+str(alpha)+"_R_"+str(R)+".txt", np.array(alpha_est))
 
 
 ### Box plot of the estimated alphas
@@ -67,7 +67,7 @@ ax= plt.gca()
 for R in Rs:
     alpha_hats = []
     for alpha in alphas:
-        alpha_hats.append(np.loadtxt("data/alpha_"+str(alpha)+"_R_"+str(R)+".txt"))
+        alpha_hats.append(np.loadtxt("./companion_paper/data/estim_perturbed_lattices/alpha_"+str(alpha)+"_R_"+str(R)+".txt"))
         print(alpha, R, np.quantile(alpha_hats, 0.05), np.quantile(alpha_hats, 0.95))
 
     bplot = plt.boxplot(alpha_hats, positions=[x, x+0.5, x+1],  patch_artist=True, widths = 0.4)

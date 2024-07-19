@@ -152,23 +152,23 @@ def quantile_non_asymptotic(q_1, q_2, r, alpha, J, i_min, i_max):
     Compute the theorical quantiles of order q_1 and q_2 of alpha_hat, using the non asymptotic covariance matrix Sigma_R defined in Propostion 3.14.
     """
     print("Computation cov matrix: start")
-    if os.path.exists("data/cov/sig_alpha_"+str(alpha)+"_r_"+str(r)+"_jmin_"+str(np.min(J))+"_jmax"+str(np.max(J))+"_imin_"+str(i_min)+"_imax_"+str(i_max)+".txt") == False:
+    if os.path.exists("./companion_paper/data/cov/sig_alpha_"+str(alpha)+"_r_"+str(r)+"_jmin_"+str(np.min(J))+"_jmax"+str(np.max(J))+"_imin_"+str(i_min)+"_imax_"+str(i_max)+".txt") == False:
         Sig = cov_matrix(r, alpha, J, i_min, i_max)
-        np.savetxt("data/cov/sig_alpha_"+str(alpha)+"_r_"+str(r)+"_jmin_"+str(np.min(J))+"_jmax"+str(np.max(J))+"_imin_"+str(i_min)+"_imax_"+str(i_max)+".txt", Sig)
+        np.savetxt("./companion_paper/data/cov/sig_alpha_"+str(alpha)+"_r_"+str(r)+"_jmin_"+str(np.min(J))+"_jmax"+str(np.max(J))+"_imin_"+str(i_min)+"_imax_"+str(i_max)+".txt", Sig)
     else:
         print("Already computed. Loading...")
-        Sig = np.loadtxt("data/cov/sig_alpha_"+str(alpha)+"_r_"+str(r)+"_jmin_"+str(np.min(J))+"_jmax"+str(np.max(J))+"_imin_"+str(i_min)+"_imax_"+str(i_max)+".txt")
+        Sig = np.loadtxt("./companion_paper/data/cov/sig_alpha_"+str(alpha)+"_r_"+str(r)+"_jmin_"+str(np.min(J))+"_jmax"+str(np.max(J))+"_imin_"+str(i_min)+"_imax_"+str(i_max)+".txt")
     print("Computation cov matrix: ok")
     print("Cholesky decomposition: start")
-    if os.path.exists("data/cov/sig12_alpha_"+str(alpha)+"_r_"+str(r)+"_jmin_"+str(np.min(J))+"_jmax"+str(np.max(J))+"_imin_"+str(i_min)+"_imax_"+str(i_max)+".txt") == False:
+    if os.path.exists("./companion_paper/data/cov/sig12_alpha_"+str(alpha)+"_r_"+str(r)+"_jmin_"+str(np.min(J))+"_jmax"+str(np.max(J))+"_imin_"+str(i_min)+"_imax_"+str(i_max)+".txt") == False:
         #Due to possibly large size of the matrice numerical errors could appear leading to small negative eigenvalues of the covariance matrix.
         #Theses numerical errors leads to small imaginary part of the square root of the covariance matrix
         #We thus consider the real part of the square root.
         Sig12 = np.real(lg.sqrtm(Sig))
-        np.savetxt("data/cov/sig12_alpha_"+str(alpha)+"_r_"+str(r)+"_jmin_"+str(np.min(J))+"_jmax"+str(np.max(J))+"_imin_"+str(i_min)+"_imax_"+str(i_max)+".txt", Sig12)
+        np.savetxt("./companion_paper/data/cov/sig12_alpha_"+str(alpha)+"_r_"+str(r)+"_jmin_"+str(np.min(J))+"_jmax"+str(np.max(J))+"_imin_"+str(i_min)+"_imax_"+str(i_max)+".txt", Sig12)
     else:
         print("Already computed. Loading...")
-        Sig12 = np.loadtxt("data/cov/sig12_alpha_"+str(alpha)+"_r_"+str(r)+"_jmin_"+str(np.min(J))+"_jmax"+str(np.max(J))+"_imin_"+str(i_min)+"_imax_"+str(i_max)+".txt")
+        Sig12 = np.loadtxt("./companion_paper/data/cov/sig12_alpha_"+str(alpha)+"_r_"+str(r)+"_jmin_"+str(np.min(J))+"_jmax"+str(np.max(J))+"_imin_"+str(i_min)+"_imax_"+str(i_max)+".txt")
     print("Cholesky decomposition: ok")
 
     #Number of independent realization of the theoritical limit distribution used to  estimate the quantiles of alpha_hat
@@ -203,12 +203,12 @@ def quantile_asymptotic(q_1, q_2, r, alpha, J, i_min, i_max):
     Compute the theorical quantiles of order q_1 and q_2 of alpha_hat - alpha, using the asymptotic covariance matrix Sigma.
     """
     print("Computation cov matrix: start")
-    if os.path.exists("data/cov/sig_alpha_"+str(alpha)+"_r_"+str(r)+"_jmin_"+str(np.min(J))+"_jmax"+str(np.max(J))+"_imin_"+str(i_min)+"_imax_"+str(i_max)+".txt") == False:
+    if os.path.exists("./companion_paper/data/cov/sig_alpha_"+str(alpha)+"_r_"+str(r)+"_jmin_"+str(np.min(J))+"_jmax"+str(np.max(J))+"_imin_"+str(i_min)+"_imax_"+str(i_max)+".txt") == False:
         Sig = cov_matrix(r, alpha, J, i_min, i_max)
-        np.savetxt("data/cov/sig_alpha_"+str(alpha)+"_r_"+str(r)+"_jmin_"+str(np.min(J))+"_jmax"+str(np.max(J))+"_imin_"+str(i_min)+"_imax_"+str(i_max)+".txt", Sig)
+        np.savetxt("./companion_paper/data/cov/sig_alpha_"+str(alpha)+"_r_"+str(r)+"_jmin_"+str(np.min(J))+"_jmax"+str(np.max(J))+"_imin_"+str(i_min)+"_imax_"+str(i_max)+".txt", Sig)
     else:
         print("Already computed. Loading...")
-        Sig = np.loadtxt("data/cov/sig_alpha_"+str(alpha)+"_r_"+str(r)+"_jmin_"+str(np.min(J))+"_jmax"+str(np.max(J))+"_imin_"+str(i_min)+"_imax_"+str(i_max)+".txt")
+        Sig = np.loadtxt("./companion_paper/data/cov/sig_alpha_"+str(alpha)+"_r_"+str(r)+"_jmin_"+str(np.min(J))+"_jmax"+str(np.max(J))+"_imin_"+str(i_min)+"_imax_"+str(i_max)+".txt")
     print("Computation cov matrix: ok")
     print("Cholesky decomposition: start")
     I_ = []
@@ -266,10 +266,10 @@ def confidence_interval_cov_R(q_1, q_2, r, alpha_hat, J, i_min, i_max):
 def confidence_interval_cov_asymptotic(q_1, q_2, r, alpha_hat, J, i_min, i_max):
     """
     Compute the asymptotic confidence intervals of order q_2 - q_1 of the Corollary 3.10 of the companion paper:
-    
+
     [alpha_hat - F^{-1}(q_2; alpha_hat)/log(r), alpha_hat -F^{-1}(q_1; alpha_hat)/log(r)]
     when alpha_hat has been estimated with scales J and with Hermites functions indexed by I = \{i = (i_x, i_y) in N^2| i_min =< i_x, i_y < i_max and i_x or i_y is odd.
-    and where F^{-1}(q_2; alpha_hat) is the quantile of order q_2 of the random variable 
+    and where F^{-1}(q_2; alpha_hat) is the quantile of order q_2 of the random variable
     Warning:
 
     Note that this function has been implemented only for comparison with `confidence_interval_cov_R` and should not be used as it could lead to non accurate confidence intervals for non really large point patterns (refer to the discussion of the end of Section 4.2 of the companion paper)

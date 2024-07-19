@@ -2,12 +2,12 @@ import numpy as np
 import matplotlib.pyplot as plt
 plt.rcParams.update({'font.size': 13})
 
-from alpha_hat  import alpha_hat
+from compute_estimator  import alpha_hat
 from tutorial import generate_pp
 
 ### Explication RSA
 
-Phi = np.loadtxt("data/point_patterns/matern.txt")
+Phi = np.loadtxt("./companion_paper/data/point_patterns/matern.txt")
 
 #Plots the point pattern
 #Rescale the point pattern to intensity 1, in order to compare the points configurations of RSA and Ginibre
@@ -133,7 +133,7 @@ plt.show()
 
 ### Explication Ginibre
 
-Phi = np.loadtxt("data/point_patterns/ginibre.txt")
+Phi = np.loadtxt("./companion_paper/data/point_patterns/ginibre.txt")
 
 #Plots the point pattern
 
@@ -160,7 +160,7 @@ i_min = 0
 i_max = 10
 
 
-L_j, r = alpha_hat.alpha_hat(Phi, J, i_min, i_max)
+L_j, r = alpha_hat.wavelet_transform(Phi, J, i_min, i_max)
 
 #Small scale portion of the curve
 j_0 = 0
@@ -252,7 +252,6 @@ plt.plot(J, L_j_poisson_mean/n_sim_poisson, color = 'g', linestyle = "dotted")
 J  = np.array(J)
 plt.text(0.4, 1.65, "Poisson.", color = 'g')
 plt.vlines(1, np.min(L_j_poisson_mean/n_sim_poisson), np.max(L_j_poisson_mean/n_sim_poisson), color = 'k')
-
 
 plt.legend()
 plt.show()

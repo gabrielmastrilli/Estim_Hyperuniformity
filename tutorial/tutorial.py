@@ -5,6 +5,8 @@ from compute_estimator import confidence_interval
 from compute_estimator  import alpha_hat
 from tutorial import generate_pp
 
+#Make sure to have the console on the folder Estim_Hyperuniformity
+
 ### Example: estimation for a poisson point process.
 
 #Length side of the observation window [-R, R]^2
@@ -30,15 +32,15 @@ plt.plot(J, C_j)
 J_alpha= np.linspace(0.5, 1)
 
 #Compute and print of alpha hat.
-alpha_hat = alpha_hat.alpha_hat(Phi, J_alpha, i_min, i_max)
-print(alpha_hat)
+alpha_est= alpha_hat.alpha_hat(Phi, J_alpha, i_min, i_max)
+print(alpha_est)
 
-plt.vlines(np.min(J), np.min(C_j), np.max(C_j),color = 'k')
-plt.vlines(np.max(J), np.min(C_j), np.max(C_j), color = 'k')
+plt.vlines(np.min(J_alpha), np.min(C_j), np.max(C_j),color = 'k')
+plt.vlines(np.max(J_alpha), np.min(C_j), np.max(C_j), color = 'k')
 
 plt.xlabel("j")
 plt.ylabel("$\mathcal{C}$")
-plt.title("$\widehat{\\alpha} = $" +str(alpha_hat)[:8])
+plt.title("$\widehat{\\alpha} = $" +str(alpha_est)[:8])
 
 #Plots the point pattern
 plt.subplot(1, 2, 1)
@@ -79,22 +81,22 @@ J = np.linspace(0.2, 1.4, num = 100)
 #Min and max degree of the 1d-hermites polynomials involved in the hermites wavelets
 i_min = 0
 i_max = 10
-L_j, r = compute_alpha_hat.compute_wavelet_transforms(Phi, J, i_min, i_max)
+L_j, r = alpha_hat.wavelet_transform(Phi, J, i_min, i_max)
 C_j = np.log(L_j)/np.log(r)
 plt.plot(J, C_j)
 
 #The set of scales used for estimating alpha with a linear regression
 J_alpha = np.linspace(0.45, 1)
-alpha_hat = alpha_hat.alpha_hat(Phi, J_alpha, i_min, i_max)
-print(alpha_hat)
+alpha_est = alpha_hat.alpha_hat(Phi, J_alpha, i_min, i_max)
+print(alpha_est)
 
-plt.vlines(np.min(J), np.min(np.log(L_j)/np.log(r)), np.max(np.log(L_j)/np.log(r)),color = 'k')
-plt.vlines(np.max(J), np.min(np.log(L_j)/np.log(r)), np.max(np.log(L_j)/np.log(r)), color = 'k')
+plt.vlines(np.min(J_alpha), np.min(np.log(L_j)/np.log(r)), np.max(np.log(L_j)/np.log(r)),color = 'k')
+plt.vlines(np.max(J_alpha), np.min(np.log(L_j)/np.log(r)), np.max(np.log(L_j)/np.log(r)), color = 'k')
 
 plt.xlabel("j")
 plt.ylabel("$\mathcal{C}$")
 
-plt.title("$\widehat{\\alpha} = $" +str(alpha_hat)[:8])
+plt.title("$\widehat{\\alpha} = $" +str(alpha_est)[:8])
 plt.show()
 
 ### Example: computation of the asymptotic confidence interval for a poisson point process.
@@ -117,11 +119,11 @@ i_max = 7
 J = np.linspace(0.5, 1, num = 20)
 
 #Compute and print of alpha hat.
-alpha_hat = alpha_hat.alpha_hat(Phi, J, i_min, i_max)
-print(alpha_hat)
+alpha_est = alpha_hat.alpha_hat(Phi, J, i_min, i_max)
+print(alpha_est)
 
 q_1 = 0.025
 q_2 = 0.975
-a, b = confidence_interval.confidence_interval_cov_R(q_1, q_2, R, alpha_hat, J, i_min, i_max)
+a, b = confidence_interval.confidence_interval_cov_R(q_1, q_2, R, alpha_est, J, i_min, i_max)
 print("Asymptotic confidence intervals \n")
 print("["+str(a)[:6]+", "+str(b)[:6]+"]")

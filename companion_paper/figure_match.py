@@ -11,8 +11,7 @@ from structure_factor.spatial_windows import BoxWindow
 from structure_factor.utils import meshgrid_to_column_matrix
 from structure_factor.point_processes import HomogeneousPoissonPointProcess
 
-from alpha_hat  import alpha_hat
-
+from compute_estimator import alpha_hat
 
 ### Creating points pattern of matched point process and estimating alpha with 75 tapers and 16 tapers
 
@@ -71,8 +70,8 @@ for i_intens in range(len(intenss)):
     J = np.linspace(j_min[i_intens], 1)
 
     #If we haven't computed the estimated alphas for this set of parameter
-    if os.path.exists("data/match_intens_"+str(intens)+".txt") == False:
-        alpha_hat = []
+    if os.path.exists("./companion_paper/data/estim_matched/match_intens_"+str(intens)+".txt") == False:
+        alpha_est = []
         T_j_mean = np.zeros(len(J))
         for i in range(n_sim):
             print(i, intens)
@@ -81,12 +80,12 @@ for i_intens in range(len(intenss)):
             Phi = match(R, intens)
 
             #Estimate alpha for this realization
-            alpha_hat.append(alpha_hat.alpha_hat(Phi, J, i_min, i_max))
+            alpha_est.append(alpha_hat.alpha_hat(Phi, J, i_min, i_max))
 
 
-            print(alpha_hat[-1], np.mean(alpha_hat), np.std(alpha_hat))
+            print(alpha_est[-1], np.mean(alpha_est), np.std(alpha_est))
             print("\n")
-        np.savetxt("data/match_intens_"+str(intens)+".txt", alpha_hat)
+        np.savetxt("./companion_paper/data/estim_matched/match_intens_"+str(intens)+".txt", alpha_est)
 
 #Estimation with 16 tapers
 
@@ -99,16 +98,16 @@ j_min = 0.75
 R = 40
 
 J = np.linspace(j_min, 1)
-if os.path.exists("data/match_intens_"+str(intens)+"_16.txt") == False:
-    alpha_hat = []
+if os.path.exists("./companion_paper/data/estim_matched/match_intens_"+str(intens)+"_16.txt") == False:
+    alpha_est = []
     T_j_mean = np.zeros(len(J))
     for i in range(n_sim):
         print(i, intens, i_max)
         Phi = match(R, intens)
-        alpha_hat.append(alpha_hat.alpha_hat(Phi, J, i_min, i_max))
-        print(alpha_hat[-1], np.mean(alpha_hat), np.std(alpha_hat))
+        alpha_est.append(alpha_hat.alpha_hat(Phi, J, i_min, i_max))
+        print(alpha_est[-1], np.mean(alpha_est), np.std(alpha_est))
         print("\n")
-    np.savetxt("data/match_intens_"+str(intens)+"_16.txt", alpha_hat)
+    np.savetxt("./companion_paper/data/estim_matched/match_intens_"+str(intens)+"_16.txt", alpha_est)
 
 ### Box plot of the estimated alphas
 
@@ -120,7 +119,7 @@ x = 0.5
 y = 3.5
 for i_intens in range(len(intenss)):
     intens = intenss[i_intens]
-    alpha_hats = np.loadtxt("data/match_intens_"+str(intens)+".txt")
+    alpha_hats = np.loadtxt("./companion_paper/data/estim_matched/match_intens_"+str(intens)+".txt")
     bplot = plt.boxplot(alpha_hats, positions=[x],  patch_artist=True, widths = 0.4)
     plt.text(x-0.03*(intens==0.5), 0.7, str(1+intens))
     x+=0.5
@@ -143,7 +142,7 @@ intens= 0.2
 
 x = 0.5
 y = 3.5
-alpha_hats = np.loadtxt("data/match_intens_"+str(intens)+"_16.txt")
+alpha_hats = np.loadtxt("./companion_paper/data/estim_matched/match_intens_"+str(intens)+"_16.txt")
 bplot = plt.boxplot(alpha_hats, positions=[x],  patch_artist=True, widths = 0.4)
 plt.text(x-0.1, -1.5, "16 tapers")
 x+=0.5
@@ -152,7 +151,7 @@ for patch in bplot['boxes']:
 for median in bplot['medians']:
     median.set_color('black')
 
-alpha_hats = np.loadtxt("data/match_intens_"+str(intens)+".txt")
+alpha_hats = np.loadtxt("./companion_paper/data/estim_matched/match_intens_"+str(intens)+".txt")
 bplot = plt.boxplot(alpha_hats, positions=[x],  patch_artist=True, widths = 0.4)
 plt.text(x-0.1, -1.5, "75 tapers")
 x+=0.5
