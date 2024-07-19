@@ -13,5 +13,11 @@ We provide scripts and data that have been used for creating the figures of Sect
 
   - ``figure_match.py`` corresponds to Figure 3, that shows the distribution of the estimator of the hyperuniformity exponent when considering matched point processes. First part of the script generates the data. These data have been pre-computed and stored in the [./data](./data) folder so that the first part of the script is not necessary to run. Second part creates Figure 3. 
 
-- ``figure_algae.py`` corresponds to Figure 4, that estimates the hyperuniformity exponent for a system of marine algae studied in [''Circular swimming motility and disordered hyperuniform state in an algae system''](https://www.pnas.org/doi/full/10.1073/pnas.2100493118). Positions of the points are in [./data/point_patterns](./data/point_patterns) folder.
+- ``figure_algae.py`` corresponds to Figure 4, that estimates the hyperuniformity exponent for a system of marine algae studied in [[1]](#1). Positions of the points are in [./data/point_patterns](./data/point_patterns) folder.
+
+- ## References
+<a id="1">[1]</a> 
+Huang, Mingji and Hu, Wensi and Yang, Siyuan and Liu, Quan-Xing and Zhang, HP (2021). 
+Circular swimming motility and disordered hyperuniform state in an algae system. 
+Proceedings of the National Academy of Sciences, 118(18), e2100493118.
 
