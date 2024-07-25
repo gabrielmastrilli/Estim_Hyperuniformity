@@ -1,7 +1,7 @@
 
 # Companion paper
 
-We provide scripts and data that have been used for creating the figures of Section 4 of the companion paper [''Estimating the hyperunformity exponent''](https://arxiv.org).
+We provide scripts and data that have been used for creating the figures of Section 4 of the companion paper [''Estimating the hyperunformity exponent''](https://arxiv.org/abs/2407.16797).
 
 ## Content
 
