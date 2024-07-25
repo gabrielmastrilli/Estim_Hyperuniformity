@@ -33,8 +33,8 @@ In this paper, we develop a multi-scale, multi-taper estimator of the hyperunifo
 ## How to cite this work
 
   ```bash
-  @preprint{,
-    arxivid = {},
+  @preprint{mastrilli24estHU,
+    arxivid = {2407.16797},
     journal = {arXiv},
     title = {Estimating the hyperuniformity exponent of point processes},
     author = {Mastrilli, Gabriel and B\l{}aszczyszyn, Bartlomiej and Lavancier, Fr\'ed\'eric}, 
